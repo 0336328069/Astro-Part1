@@ -1,6 +1,29 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+const listCard = [
+  {
+    id:1,
+    title: "Breaking News: Earthquake Hits City",
+    href: "https://www.youtube.com",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, urna id aliquet tincidunt, nunc nisl ultrices nunc, id lacinia nunc nunc id nunc.",
+  },
+  {
+    id:2,
+    title: "New Study Reveals Benefits of Exercise",
+    href: "https://www.youtube.com",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, urna id aliquet tincidunt, nunc nisl ultrices nunc, id lacinia nunc nunc id nunc.",
+  },
+  {
+    id:3,
+    title: "Technology Trends for 2023",
+    href: "https://www.youtube.com",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, urna id aliquet tincidunt, nunc nisl ultrices nunc, id lacinia nunc nunc id nunc.",
+  }
+];
 ---
 
 <Layout title="Welcome to Astro.">
@@ -39,7 +62,11 @@ import Card from '../components/Card.astro';
 			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
 		</p>
 		<ul role="list" class="link-card-grid">
-			<Card />
+			{
+				listCard.map((item) => (
+					<Card href={item?.href} id={item?.id} title={item?.title} content={item.content} />
+				))
+			}
 			<span class="scoped-class">Test Style Scoped</span>
 		</ul>
 		<a href="/about" class="mt-5 block  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Go To About Page</a>

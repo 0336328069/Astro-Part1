@@ -1,12 +1,25 @@
 ---
 interface Props {
+	id: number|string;
+	title: string;
+	content: string;
+	href: string;
 }
-console.log(123);
+
+const { id , title, content, href } = Astro.props;
 ---
 
-<li class="link-card font-bold scoped-class" >
-	card
-</li>
+<a href="#" class="card-block block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{title}</h5>
+    <p class="font-normal text-gray-700 dark:text-gray-400 scoped-class">{content}</p>
+</a>
+<script is:inline>
+document.querySelectorAll('.card-block').forEach(c => {
+	c.addEventListener('click', () => {
+		console.log(c);
+	})
+})
+</script>
 <!-- if add is:global css is apply global -->
 <style>
 	.scoped-class{
